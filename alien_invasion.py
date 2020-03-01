@@ -1,8 +1,9 @@
 import pygame
+import game_functions as gf
 
 from settings import Settings
 from ship import Ship
-from game_functions as gf
+
 
 # Inicializa o jogo, as configurações e o objeto screen
 def run_game():
@@ -20,8 +21,8 @@ def run_game():
     
     # Inicia o laço principal do jogo
     while True:
-        gf.check_events()
-        
-        
+        gf.check_events(ship)
+        ship.update()
+        gf.update_screen(ai_settings, screen, ship)
         
 run_game()
