@@ -11,4 +11,10 @@ class Settings():
         
         #Configurações da espaçonave
         self.ship_speed_factor = 1.5
+        
+        #Configuração de projéteis. 
+        self.bullet_speed_factor = 1
+        self.bullet_width = 3
+        self.bullet_height = 15
+        self.bullet_color = 60, 60, 60
         super().__init__()

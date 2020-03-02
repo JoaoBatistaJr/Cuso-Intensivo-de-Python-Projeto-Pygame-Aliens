@@ -7,7 +7,7 @@ class Ship():
         self.screen = screen
         self.ai_settings = ai_settings
         
-        # Carrega a imagem da espaçonave e obtém seu rect
+        # Carrega a imagem da espaçonave e obtém seu rect.
         self.image = pygame.image.load('imagens/ship.bmp')
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
@@ -35,6 +35,7 @@ class Ship():
             # Atualiza o objeto rect de acordo com self.center
             self.rect.centerx = self.center
         
-        """Desenha a espaçonave em sua posição atual"""
+        
     def blitme(self):
+        """Desenha a espaçonave em sua posição atual"""
         self.screen.blit(self.image, self.rect)
