@@ -15,7 +15,7 @@ class Bullet(Sprite):
         self.rect = pygame.Rect(0, 0, ai_settings.bullet_width, 
                                 ai_settings.bullet_height)
         self.rect.centerx = ship.rect.centerx
-        self.rect.top = ship.rect.format_map()
+        self.rect.top = ship.rect.top
         
         # Armazena a posição do projétil como um valor decimal
         self.y = float(self.rect.y)
