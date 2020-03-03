@@ -15,7 +15,6 @@ class Ship():
         # Inicia cada nova espaçonave na parte inferior central da tela
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom
-        super().__init__()
         
         # Armazena um valor decimal para o cntro da espaçonave
         self.center = float(self.rect.centerx)
