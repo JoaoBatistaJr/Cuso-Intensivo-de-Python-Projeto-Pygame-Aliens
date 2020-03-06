@@ -1,40 +1,39 @@
 import pygame
+ 
+class Ship:
+    """Classe que controla a espaçonave."""
+ 
+    def __init__(self, ai_game):
+        """Inicializa a espaçonave e a coloca na posição."""
+        self.screen = ai_game.screen
+        self.settings = ai_game.settings
+        self.screen_rect = ai_game.screen.get_rect()
 
-class Ship():
-    
-    """Inicializa a espaçonave e define sua posição inicial"""
-    def __init__(self, ai_settings, screen):  
-        self.screen = screen
-        self.ai_settings = ai_settings
-        
-        # Carrega a imagem da espaçonave e obtém seu rect.
-        self.image = pygame.image.load('imagens/ship.bmp')
+        # Carrega a imagem da espaçonave e posiciona em rect.
+        self.image = pygame.image.load('images/ship.bmp')
         self.rect = self.image.get_rect()
-        self.screen_rect = screen.get_rect()
-        
-        # Inicia cada nova espaçonave na parte inferior central da tela
-        self.rect.centerx = self.screen_rect.centerx
-        self.rect.bottom = self.screen_rect.bottom
-        
-        # Armazena um valor decimal para o cntro da espaçonave
-        self.center = float(self.rect.centerx)
-        
-        # Flag de movimento
+
+        # Iniciar a nava na parte inferior central da tela.
+        self.rect.midbottom = self.screen_rect.midbottom
+
+        # Armazena um valor descimal para a posição horizontal da espaçonave.
+        self.x = float(self.rect.x)
+
+        # Flags de movimento
         self.moving_right = False
         self.moving_left = False
-        
+
     def update(self):
-        """Atualiza a posição da espaçonave de acordo com a flag de movimento."""
-        # Atualiza o valor do centro da espaçonave, e não o retângulo
+        """Atualiza a posição da nave com base nas flags de movimento"""
+        # Atualiza o valor x da nave e nao o de rect
         if self.moving_right and self.rect.right < self.screen_rect.right:
-            self.center += self.ai_settings.ship_speed_factor
+            self.x += self.settings.ship_speed
         if self.moving_left and self.rect.left > 0:
-            self.center -= self.ai_settings.ship_speed_factor
-            
-            # Atualiza o objeto rect de acordo com self.center
-            self.rect.centerx = self.center
-        
-        
+            self.x -= self.settings.ship_speed
+
+        # Atualiza o rect do self.x
+        self.rect.x = self.x
+
     def blitme(self):
-        """Desenha a espaçonave em sua posição atual"""
+        """Desenha a nave na posição atual"""
         self.screen.blit(self.image, self.rect)
